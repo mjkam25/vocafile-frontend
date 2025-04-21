@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/process",
+      "destination": "https://vocafile-api.onrender.com/process"
+    },
+    {
+      "source": "/download/:type/:file",
+      "destination": "https://vocafile-api.onrender.com/download/:type/:file"
+    },
+    {
+      "source": "/static/:path*",
+      "destination": "https://vocafile-api.onrender.com/static/:path*"
+    }
+  ]
+}
