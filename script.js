@@ -1,4 +1,5 @@
-const API_URL = 'https://vocafile-api.onrender.com/process/';
+// Mets à jour cette URL avec celle de ton API Render
+const API_URL = 'https://vocafile-api.onrender.com';
 
 const uploadForm = document.getElementById('uploadForm');
 const loader = document.getElementById('loader');
@@ -30,21 +31,26 @@ uploadForm.addEventListener('submit', async (e) => {
     formData.append('max_sentences', maxSentences);
 
     try {
-        const response = await fetch(`/process/`, {
+        const response = await fetch(`${API_URL}/process/`, {
             method: 'POST',
             body: formData
         });
         const data = await response.json();
         loader.classList.add('hidden');
+
         if (data.error) {
             showError(data.error);
             return;
         }
+
         summary.textContent = data.summary || '';
         originalText.textContent = data.original_text || '';
+
+        // Liens de téléchargement
         downloadSummary.href = `${API_URL}/${data.summary_file}`;
         downloadAudio.href = `${API_URL}/${data.audio_file}`;
         audioPlayer.src = `${API_URL}/${data.audio_file}`;
+
         result.classList.remove('hidden');
     } catch (err) {
         loader.classList.add('hidden');

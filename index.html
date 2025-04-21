@@ -2,40 +2,38 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DocVox</title>
+    <title>VocaFile - Résumeur IA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🧠 DocVox</h1>
-        <p>Transforme ton document en résumé vocal</p>
+        <h1>🧠 VocaFile</h1>
+        <p>Résumé & audio automatiques de vos fichiers PDF, DOCX, TXT…</p>
     </header>
     <main>
-        <div class="container">
-            <form id="uploadForm">
-                <label for="fileInput">Choisir un fichier :</label>
-                <input type="file" id="fileInput" name="file" accept=".pdf,.txt,.docx" required>
-                <label for="maxSentences">Nombre max de phrases :</label>
-                <input type="number" id="maxSentences" name="max_sentences" min="1" max="20" value="5" required>
-                <button type="submit">🚀 Lancer le résumé</button>
-            </form>
-            <div id="loader" class="loader hidden">⏳ Traitement en cours...</div>
-            <div id="error" class="error hidden"></div>
-            <div id="result" class="result hidden">
-                <h2>Résumé :</h2>
-                <div id="summary"></div>
-                <h2>Texte original :</h2>
-                <div id="originalText"></div>
-                <h2>Audio :</h2>
-                <audio id="audioPlayer" controls></audio>
-                <div style="margin-top: 15px;">
-                    <a id="downloadSummary" href="#" download>Télécharger le résumé</a>
-                    <a id="downloadAudio" href="#" download>Télécharger l'audio</a>
-                </div>
-            </div>
+        <form id="uploadForm">
+            <label for="fileInput">Choisir un fichier :</label>
+            <input type="file" id="fileInput" accept=".pdf,.docx,.txt" required>
+            <label for="maxSentences">Nombre de phrases du résumé :</label>
+            <input type="number" id="maxSentences" min="1" max="20" value="5">
+            <button type="submit">Envoyer</button>
+        </form>
+        <div id="loader" class="hidden">⏳ Traitement en cours…</div>
+        <div id="result" class="hidden">
+            <h2>Résumé</h2>
+            <pre id="summary"></pre>
+            <a id="downloadSummary" href="#" download="resume.txt">Télécharger le résumé</a>
+            <h2>Audio</h2>
+            <audio id="audioPlayer" controls></audio>
+            <a id="downloadAudio" href="#" download="audio.mp3">Télécharger l'audio</a>
+            <h2>Texte original</h2>
+            <pre id="originalText"></pre>
         </div>
+        <div id="error" class="hidden"></div>
     </main>
+    <footer>
+        <p>VocaFile &copy; 2025</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
